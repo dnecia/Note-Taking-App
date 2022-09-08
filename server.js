@@ -44,7 +44,30 @@ function creatingNewNote(body, notesArray) {
   );
   return newNote;
 }
+
+app.post("/api/notes", (req, res) => {
+  const newNote = creatingNewNote(req.body, allNotes);
+  res.json(newNote);
+});
 //deleting the note function
+function deletingNote(id, notesArray) {
+  for (let i = 0; i < notesArray.length; i++) {
+    let note = notesArray[i];
+
+    if (note.id == id) {
+      notesArray.splice(i, 1);
+      fs.writeFileSync(
+        path.join(__dirname, "./db/db.json"),
+        JSON.stringify(notesArray, null, 2)
+      );
+      break;
+    }
+  }
+}
+app.delete("/api/notes/:id", (req, res) => {
+  deletingNote(req.params.id, allNotes);
+  res.json(true);
+});
 //adding a listner
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
