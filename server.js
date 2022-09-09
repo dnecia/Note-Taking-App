@@ -46,7 +46,7 @@ function creatingNewNote(body, notesArray) {
 }
 
 app.post("/api/notes", (req, res) => {
-  const newNote = creatingNewNote(req.body, allNotes);
+  const newNote = creatingNewNote(req.body, theNotes);
   res.json(newNote);
 });
 //deleting the note function
@@ -65,7 +65,7 @@ function deletingNote(id, notesArray) {
   }
 }
 app.delete("/api/notes/:id", (req, res) => {
-  deletingNote(req.params.id, allNotes);
+  deletingNote(req.params.id, theNotes);
   res.json(true);
 });
 //adding a listner
