@@ -1,4 +1,5 @@
 //adding npm package
+const { v4: uuidv4 } = require("uuid");
 const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,12 +33,12 @@ app.get("*", (req, res) => {
 //adding a function to create a note
 function creatingNewNote(body, notesArray) {
   const newNote = body;
-  if (!Array.isArray(notesArray)) notesArray = [];
+  //if (!Array.isArray(notesArray)) notesArray = [];
 
-  if (notesArray.length === 0) notesArray.push(0);
+  //if (notesArray.length === 0) notesArray.push(0);
 
-  body.id = notesArray[0];
-  notesArray[0]++;
+  newNote.id = uuidv4();
+  //notesArray[0]++;
 
   notesArray.push(newNote);
   fs.writeFileSync(
