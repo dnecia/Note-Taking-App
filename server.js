@@ -31,7 +31,7 @@ app.get("*", (req, res) => {
 });
 
 //adding a function to create a note
-function creatingNewNote(body, notesArray) {
+function creatingNewNote(body) {
   const newNote = body;
   //if (!Array.isArray(notesArray)) notesArray = [];
 
@@ -40,16 +40,16 @@ function creatingNewNote(body, notesArray) {
   newNote.id = uuidv4();
   //notesArray[0]++;
 
-  notesArray.push(newNote);
+  theNotes.push(newNote);
   fs.writeFileSync(
     path.join(__dirname, "./db/db.json"),
-    JSON.stringify(notesArray, null, 2)
+    JSON.stringify(theNotes, null, 2)
   );
   return newNote;
 }
 
 app.post("/api/notes", (req, res) => {
-  const newNote = creatingNewNote(req.body, theNotes);
+  const newNote = creatingNewNote(req.body);
   res.json(newNote);
 });
 //deleting the note function

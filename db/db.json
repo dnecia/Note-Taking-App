@@ -1,18 +1,7 @@
 [
-  null,
   {
-    "title": "New note 2",
+    "title": "New Note 1",
     "text": "note",
-    "id": null
-  },
-  {
-    "title": "new note",
-    "text": "note",
-    "id": null
-  },
-  {
-    "title": "new note 3",
-    "text": "note",
-    "id": "fa2f8cf3-9647-49f6-a98c-11de8c683336"
+    "id": "5d288a80-14a6-491f-b948-8b267e595b86"
   }
 ]
